@@ -1,66 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
+import "./App.css";
+import Home from "./Home.js";
+import Header from "./Header.js";
+import Browse from "./Browse.js";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-class App extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-
-    }
-    this.testFunction = this.testFunction.bind(this)
-  }
-  componentDidMount(){
-    const form = document.querySelector('form');
-    form.addEventListener('submit', this.testFunction)
-  }
-  testFunction(event) {
-    event.preventDefault();
-    let data = new FormData(event.target);
-    data = Object.fromEntries(data.entries());
-    fetch('http://localhost:3000/testAPI', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+function App() {
+  const theme = createTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: "#80e8a9",
       },
-      body: JSON.stringify(data)
-    }).then((response) => 
-      response.json().then((data) => {console.log(data)}))
-  }
-  render() {
+      secondary: {
+        main: "#aaaaaa",
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <form>
-          <label for="id">ID:</label>
-          <input type="text" name="id" />
-          <br/>
-          <label for="owner">Owner:</label>
-          <input type="text" name="owner" />
-          <br/>
-          <label for="location">Location:</label>
-          <input type="text" name="location" />
-          <br/>
-          <label for="price">Price:</label>
-          <input type="number" name="price" />
-          <br/>
-          <button type="submit">Submit</button>
-        </form>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );}
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div className="myApp">
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/browse" component={Browse} />
+          </Switch>
+        </div>
+      </ThemeProvider>
+    </Router>
+  );
 }
 
 export default App;

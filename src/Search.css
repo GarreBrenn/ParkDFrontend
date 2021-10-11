@@ -1,0 +1,38 @@
+.Search {
+    background-color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 20px;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    width: 600px;
+    transform: translate(-50%, -50%);
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.prompt {
+    padding-left: 20px;
+}
+
+#submit {
+    position: absolute;
+    left: 0;
+    color: white;
+    text-transform: inherit;
+    display: block;
+    width: 100%;
+}
+
+.slider {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

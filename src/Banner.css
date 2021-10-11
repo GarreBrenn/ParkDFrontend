@@ -1,0 +1,43 @@
+.Banner {
+  height: 40vh;
+  background: url('./sean-pollock-PhYq704ffdA-unsplash.jpg') center center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner_info {
+  background-color: black;
+  color: white;
+  width: 300px;
+  padding-top: 15vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+}
+
+.banner_info > button {
+  color: white;
+  outline-width: 0;
+  text-transform: inherit;
+  margin-top: 20px;
+}
+
+.banner_info > h5 {
+  margin-top: 10px;
+}
+
+
+.banner_search {
+    display: flex;
+    flex-direction: column;
+}
+
+.search_button {
+  background-color: white !important;
+  font-weight: 600 !important;
+  text-transform: inherit !important;
+  border: none !important;
+  border-radius: 0px !important;
+  height: 20px !important;
+}
