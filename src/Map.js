@@ -2,15 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Map.css";
 import GoogleMapReact from "google-map-react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Paper from "@mui/material/Paper";
 
-function Map(listOfPlaces) {
+function Map(props) {
   const [lat_lng, set_lat_lng] = useState(null);
-
-  listOfPlaces = [
-    { lat: 32.782594, lng: -79.938182 },
-    { lat: 32.881925, lng: -79.986885 },
-  ];
 
   const setPosition = (position) => {
     const lat_lng = {
@@ -55,8 +49,8 @@ function Map(listOfPlaces) {
         <div lat={lat_lng.lat} lng={lat_lng.lng}>
           <LocationOnIcon fontSize="large" color="secondary" />
         </div>
-        {listOfPlaces?.map((place, i) => (
-          <div lat={place.lat} lng={place.lng} key={i}>
+        {props.listOfPlaces?.map((place, i) => (
+          <div lat={place.LatLong.split("_")[0]} lng={place.LatLong.split("_")[1]} key={i}>
             <LocationOnIcon fontSize="large" color="primary" />
           </div>
         ))}
