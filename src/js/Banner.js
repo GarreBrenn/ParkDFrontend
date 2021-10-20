@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Banner.css";
+import "../css/Banner.css";
 import { Button } from "@mui/material";
 import Search from "./Search.js"
 

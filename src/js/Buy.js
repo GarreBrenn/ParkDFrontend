@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useLocation } from "react-router-dom";
 
-export default function Browse() {
+export default function Buy() {
     const location = useLocation();
     useEffect(() => {
         const data = {

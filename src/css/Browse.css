@@ -1,0 +1,12 @@
+.entryContainer {
+    display: grid;
+    column-gap: 30px;
+    place-self: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+}
+.expandingFlex {
+    display: flex;
+}

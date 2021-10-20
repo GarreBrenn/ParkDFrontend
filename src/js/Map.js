@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Map.css";
+import "../css/Map.css";
 import GoogleMapReact from "google-map-react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 

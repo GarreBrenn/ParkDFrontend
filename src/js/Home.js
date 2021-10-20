@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
+import "../css/Home.css";
 import Banner from "./Banner.js"
 import Map from "./Map";
 

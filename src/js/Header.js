@@ -1,6 +1,6 @@
 import React from "react";
-import "./Header.css";
-import logo from "./ParkD_logo.png";
+import "../css/Header.css";
+import logo from "../ParkD_logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Avatar } from "@mui/material";
@@ -19,6 +19,7 @@ function Header() {
       </div>
 
       <div className="header_right">
+        <a href="/browse">Rent A Spot</a>
         <p>Become a host</p>
         <ExpandMoreIcon />
         <Avatar />
