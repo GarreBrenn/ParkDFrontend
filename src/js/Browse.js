@@ -34,6 +34,7 @@ export default class Browse extends React.Component {
 
     }
     componentDidMount() {
+        console.log(this.props.location)
         let data = {
             startDate: this.props.location.state != null ? this.props.location.state.startDate : null,
             endDate: this.props.location.state != null ? this.props.location.state.endDate : null,
@@ -44,7 +45,7 @@ export default class Browse extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: null,
+            body: JSON.stringify(data),
         }).then((response) =>
             response.json().then((data) => { 
                 if(data.length % 3 == 0) {
@@ -68,7 +69,6 @@ export default class Browse extends React.Component {
                     })
                     //1st and 2nd have one extra, last is %3
                 }
-                console.log(this.state.firstColumnData)
             }))
     }
     render() {
