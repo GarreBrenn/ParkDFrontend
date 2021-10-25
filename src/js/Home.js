@@ -7,7 +7,7 @@ function Home() {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-  let placesData = new Array();
+  let placesData = [];
   fetch('http://localhost:3000/testAPI/query', {
       method: 'POST',
       headers: {

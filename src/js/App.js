@@ -31,6 +31,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/browse" component={Browse} />
+            <Route exact path="/buy" component={Buy} />
           </Switch>
         </div>
       </ThemeProvider>
