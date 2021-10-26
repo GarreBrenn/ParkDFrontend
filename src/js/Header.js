@@ -14,7 +14,7 @@ function Header() {
       </Link>
 
       <div className="header_center">
-        <input type="text" />
+        <input className="noOutline" type="text" />
         <SearchIcon />
       </div>
 

@@ -23,7 +23,7 @@
 
 import React from 'react';
 import '../css/Browse.css';
-import { Grid } from '@mui/material'
+import { Grid, Box } from '@mui/material'
 import SpotCard from './SpotCard.js'
 export default class Browse extends React.Component {
     constructor(props) {
@@ -32,11 +32,39 @@ export default class Browse extends React.Component {
             // firstColumnData: null,
             // secondColumnData: null,
             // thirdColumnData: null
-            cardData: null
+            cardData: null,
+            lat_lng: {}
         }
 
     }
+
     componentDidMount() {
+        const setPosition = (position) => {
+            const lat_lng = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
+            this.setState({
+                lat_lng: lat_lng
+            })
+        };
+
+        const error = (err) => {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(setPosition, error, options);
+        } else {
+            console.log("error: geolocdation not supported");
+        }
+
         let data = {
             startDate: this.props.location.state != null ? this.props.location.state.startDate : null,
             endDate: this.props.location.state != null ? this.props.location.state.endDate : null,
@@ -49,91 +77,30 @@ export default class Browse extends React.Component {
             },
             body: JSON.stringify(data),
         }).then((response) =>
-            response.json().then((data) => { 
+            response.json().then((data) => {
                 this.setState({
                     cardData: data
                 })
-                // console.log(data)
-                // if(data.length % 3 == 0) {
-                //     this.setState({firstColumnData: data.slice(0,data.length/3),
-                //     secondClumnData: data.slice(data.length/3, (2*data.length) / 3),
-                //     thirdColumnData: data.slice(((2*data.length) / 3), data.length)})
-                // }
-                // else if(data.length % 3 == 1) {
-                //     this.setState({
-                //         firstColumnData: (data.slice(0,(data.length/3) + 1)),
-                //         secondColumnData: (data.slice((data.length / 3) + 1, (((2*data.length) / 3)))),
-                //         thirdColumnData: data.slice(((((2*data.length) / 3))), data.length)
-                //     })
-                //     //1st has one extra, other 2 have normal
-                // }
-                // else {
-                //     this.setState({
-                //         firstColumnData: (data.slice(0,(data.length/3) + 1)),
-                //         secondColumnData: (data.slice((data.length / 3) + 1, (((2*data.length) / 3) + 1))),
-                //         thirdColumnData: (data.slice(((((2*data.length) / 3) + 1)), data.length))
-                //     })
-                //     //1st and 2nd have one extra, last is %3
-                // }
-                console.log(this.state.cardData)
             }))
     }
     render() {
-        if (this.state.cardData !== null) {
-        return (
-            <Grid container sx={{ flexGrow: 1 }} rowSpacing={5}>
-                {
-                    this.state.cardData.map(d => {
-                        return <Grid item key={d.Key} xs={12} md={6} lg={4}>
-                            <SpotCard content={d} filterInfo={this.props.location.state} />
-                        </Grid>
-                    })
-                }
-            </Grid>
-            // <>
-            //     {   
-            //     !this.state.firstColumnData ? null :     
-            //     <div className="entryContainer" id="entryContainer">
-            //     <div style={{gridColumn: "1"}} id="col1">
-            //         {
-            //             this.state.firstColumnData.map((d) => {
-            //                 return <div style={{backgroundColor: "lightgray", width: "400px", height: "400px", display: "block"}}>
-            //                 <h1>{d.Record.Address}</h1>
-            //                 <h1>{d.Record.Photos}</h1>
-            //                 <h1>{d.Record.Type} Parking</h1>
-            //                 <h1>Price: ${d.Record.Price}</h1>
-            //             </div>;
-            //             })
-            //         }
-            //     </div>
-            //     <div style={{gridColumn: "2"}} id="col2">
-            //     {
-            //             this.state.secondColumnData.map((d) => {
-            //                 return <div style={{backgroundColor: "lightgray", width: "400px", height: "400px", display: "block"}}>
-            //                 <h1>{d.Record.Address}</h1>
-            //                 <h1>{d.Record.Photos}</h1>
-            //                 <h1>{d.Record.Type} Parking</h1>
-            //                 <h1>Price: ${d.Record.Price}</h1>
-            //             </div>;
-            //             })
-            //         }
-            //     </div>
-            //     <div style={{gridColumn: "3"}} id="col3">
-            //     {
-            //             this.state.thirdColumnData.map((d) => {
-            //                 return <div style={{backgroundColor: "lightgray", width: "400px", height: "400px", display: "block"}}>
-            //                 <h1>{d.Record.Address}</h1>
-            //                 <h1>{d.Record.Photos}</h1>
-            //                 <h1>{d.Record.Type} Parking</h1>
-            //                 <h1>Price: ${d.Record.Price}</h1>
-            //             </div>;
-            //             })
-            //         }
-            //     </div>
-            // </div>}
-            // </>
-    
-        );} else {
+        if (this.state.cardData !== null && this.state.lat_lng !== null) {
+            return (
+                <Box sx={{ flexGrow: 1, marginTop: 5 }}>
+                    <Grid container rowSpacing={5}>
+                        {
+                            this.state.cardData.map(d => {
+                                return <Grid item key={d.Key} xs={12} md={6} lg={4} xl={3}>
+                                    <SpotCard content={d}
+                                        filterInfo={this.props.location.state}
+                                        location={this.state.lat_lng} />
+                                </Grid>
+                            })
+                        }
+                    </Grid>
+                </Box>
+            );
+        } else {
             return (<h1>Loading...</h1>);
         }
     }

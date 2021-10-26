@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom";
 
+//TODO: BUY PAGE BREAKS IF START/END DATES AND PRICE WERE NOT INITIALIZED
 export default function Buy() {
     const location = useLocation();
     const [myData, setMyData] = useState({});

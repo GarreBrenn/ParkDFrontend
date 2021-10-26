@@ -33,6 +33,10 @@
     outline-width: 0;
 }
 
+.noOutline:focus {
+    outline: none;
+}
+
 .header_right {
     display: flex;
     align-items: center;
