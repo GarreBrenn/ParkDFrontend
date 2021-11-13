@@ -47,7 +47,7 @@ function SpotCard({ content, filterInfo, location }) {
                 <CardActions>
                     <Link
                         to={{
-                            pathname: "/buy",
+                            pathname: `/spot/${content.Record.ID}`,
                             state: {
                                 content: content,
                                 filterInfo: filterInfo
@@ -79,7 +79,7 @@ function SpotCard({ content, filterInfo, location }) {
                 <CardActions>
                     <Link
                         to={{
-                            pathname: "/buy",
+                            pathname: `/spot/${content.Record.ID}`,
                             state: {
                                 content: content,
                                 filterInfo: filterInfo
