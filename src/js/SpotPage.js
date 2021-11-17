@@ -10,7 +10,6 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-//TODO: BUY PAGE BREAKS IF START/END DATES AND PRICE WERE NOT INITIALIZED
 export default function SpotPage() {
     const location = useLocation();
     const [distanceAndTime, setDistanceAndTime] = useState({});
@@ -25,18 +24,6 @@ export default function SpotPage() {
 
     useEffect(() => {
         setAvailability(record.State);
-
-        // const timeIn = filterInfo ?
-        //     Date.parse(filterInfo.startDate) :
-        //     null;
-        // const timeOut = filterInfo ?
-        //     Date.parse(filterInfo.endDate) :
-        //     null;
-        // const data = {
-        //     id: record.ID,
-        //     timeIn: timeIn,
-        //     timeOut: timeOut
-        // }
 
         if (startDate === null && filterInfo != null) {
             setStartDate(filterInfo.startDate)
@@ -76,10 +63,12 @@ export default function SpotPage() {
     function handleSubmission() {
         console.log("here")
         if (isValidSubmission()) {
+            // TODO: ADD REAL GUESTID
             const myData = {
                 timeIn: Date.parse(startDate),
                 timeOut: Date.parse(endDate),
-                guestID: record.ID
+                id: record.ID,
+                guestId: "Garrett"
             }
             console.log("sending request with...")
             console.log(myData);
@@ -101,11 +90,6 @@ export default function SpotPage() {
         setAvailability("Unavailable");
     }
 
-    // if (Object.keys(myData).length === 0) {
-    //     return (
-    //         <h1>Loading...</h1>
-    //     );
-    // } else {
     return (
         <div className="container">
             <div className="title">
@@ -160,12 +144,11 @@ export default function SpotPage() {
                                 disabled={!isValidSubmission()} onClick={handleSubmission}>Purchase This Spot</Button>
                         </div>
                     </Paper>
+                    <Typography style={{marginTop: "10px"}} paragraph variant="body1" align="center" color="text.secondary">Are you looking to check in to this spot? <Link to="/checkin">
+                        <Typography align="inherit" display="inline" variant="body1" color="text.secondary">Check In</Typography>
+                    </Link></Typography>
                 </div>
             </div>
-            {/* <h1>Congratulations, you've reserved a spot!</h1>
-                <h3>Address: {record.Address}</h3>
-                <h3>Checkin Date/Time: {filterInfo.startDate.toString()}</h3>
-                <h3>Checkout Date/Time: {filterInfo.endDate.toString()}</h3> */}
         </div>
     );
 }
