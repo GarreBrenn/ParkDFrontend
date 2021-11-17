@@ -1,11 +1,24 @@
+// npm start
 import "../css/App.css";
 import Home from "./Home.js";
 import Header from "./Header.js";
 import Browse from "./Browse.js";
 import Buy from "./Buy.js";
+
+import login from "./login.js"
+import register from "./register.js"
+
+
 import {useEffect} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
+dotenv.config({path: '../env'});
+const mysql = require("mysql");
+
+
 
 function App() {
   const theme = createTheme({
@@ -32,6 +45,9 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/browse" component={Browse} />
             <Route exact path="/buy" component={Buy} />
+            <Route exact path="/login" component={login} />
+            <Route exact path="/register" component={register}/>
+            
           </Switch>
         </div>
       </ThemeProvider>

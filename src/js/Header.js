@@ -22,6 +22,7 @@ function Header() {
         <a href="/browse">Rent A Spot</a>
         <p>Become a host</p>
         <ExpandMoreIcon />
+        <a href="/login">Login</a>
         <Avatar />
       </div>
     </div>
