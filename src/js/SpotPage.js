@@ -53,12 +53,14 @@ export default function SpotPage() {
     }, []);
 
     function isValidSubmission() {
-        if (startDate != null && endDate != null && 
-            availability !== "Unavailable") {
-            return true;
-        } else {
-            return false;
-        }
+        if (startDate == null || endDate == null ||
+            availability == "Unavailable") {
+                return false;
+            } else if (Date.parse(startDate) >= Date.parse(endDate)) {
+                return false;
+            } else {
+                return true;
+            }
     }
 
     function handleSubmission() {
