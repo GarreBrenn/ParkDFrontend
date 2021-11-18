@@ -53,7 +53,8 @@ export default function SpotPage() {
     }, []);
 
     function isValidSubmission() {
-        if (startDate != null && endDate != null) {
+        if (startDate != null && endDate != null && 
+            availability !== "Unavailable") {
             return true;
         } else {
             return false;

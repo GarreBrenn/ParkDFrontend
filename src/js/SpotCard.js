@@ -54,7 +54,7 @@ function SpotCard({ content, filterInfo, location }) {
                             }
                         }}
                     >
-                        <Button size="small">Buy</Button>
+                        <Button size="small">Go to page</Button>
                     </Link>
                 </CardActions>
             </Card>
