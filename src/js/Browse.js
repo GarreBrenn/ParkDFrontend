@@ -68,8 +68,10 @@ export default class Browse extends React.Component {
         let data = {
             startDate: this.props.location.state != null ? this.props.location.state.startDate : null,
             endDate: this.props.location.state != null ? this.props.location.state.endDate : null,
-            price: this.props.location.state != null ? this.props.location.state.price : null
+            priceLow: this.props.location.state != null ? this.props.location.state.price[0] : null,
+            priceHigh: this.props.location.state != null ? this.props.location.state.price[1] : null
         }
+        console.log(data);
         fetch('http://localhost:3000/testAPI/query', {
             method: 'POST',
             headers: {

@@ -2,10 +2,10 @@ import "../css/App.css";
 import Home from "./Home.js";
 import Header from "./Header.js";
 import Browse from "./Browse.js";
-import Buy from "./Buy.js";
+import SpotPage from "./SpotPage.js";
 import {useEffect} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 function App() {
   const theme = createTheme({
@@ -31,7 +31,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/browse" component={Browse} />
-            <Route exact path="/buy" component={Buy} />
+            <Route path="/spot/:id" component={SpotPage} />
+            <Redirect from="/spot" to="/browse" />
           </Switch>
         </div>
       </ThemeProvider>
