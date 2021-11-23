@@ -17,9 +17,8 @@ export default class login extends React.Component{
                      </form>
                      <h3>Or register! It's free</h3>
                      <a href ="/register">Register here</a>
-                     if (message){
-                        <h4>placeholder if stmt RESP</h4>
-                     }
+                     
+                        
                 </body>
             </div>
         );

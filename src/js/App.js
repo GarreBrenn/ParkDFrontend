@@ -7,7 +7,7 @@ import Buy from "./Buy.js";
 
 import login from "./login.js"
 import register from "./register.js"
-
+import tempPage from "./tempPage.js"
 
 import {useEffect} from 'react'
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -47,7 +47,7 @@ function App() {
             <Route exact path="/buy" component={Buy} />
             <Route exact path="/login" component={login} />
             <Route exact path="/register" component={register}/>
-            
+            <Route exact path="/tempPage" component={tempPage}/>
           </Switch>
         </div>
       </ThemeProvider>
