@@ -27,6 +27,24 @@ function CheckIn() {
         width: 320
     }
 
+    function getFileAndSend() {
+        let selectedFile = document.getElementById("input").files[0];
+        let formData = new FormData();
+        formData.append("file", selectedFile);
+        fetch('http://localhost:3000/testAPI/WHATEVERYOURROUTEIS', {
+            method: 'POST',
+            //Might not be needed idk
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            body: formData
+        }).then((response) => {
+            console.log(response)
+        })
+        //You can then pull the file in backend with something like
+        //let myFile = new File(req.body.file);
+
+    }
     useEffect(() => {
         const myData = {
             spotID: spotID,
@@ -70,6 +88,9 @@ function CheckIn() {
                 onScan={handleScan}
             />
             <p>qrdata: {qrData}</p>
+            {/*This is the file input*/}
+            <input type="file" id="input"/>
+
         </div>
     )} else {
         return (
