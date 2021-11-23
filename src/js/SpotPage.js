@@ -147,7 +147,15 @@ export default function SpotPage() {
                                 disabled={!isValidSubmission()} onClick={handleSubmission}>Purchase This Spot</Button>
                         </div>
                     </Paper>
-                    <Typography style={{marginTop: "10px"}} paragraph variant="body1" align="center" color="text.secondary">Are you looking to check in to this spot? <Link to="/checkin">
+                    <Typography style={{marginTop: "10px"}} paragraph variant="body1" align="center" color="text.secondary">Are you looking to check in to this spot? 
+                    {/* TODO: SUBSTITUTE GUESTID FOR REAL VALUE */}
+                    <Link to={{
+                            pathname: `/checkin/${record.ID}`,
+                            state: {
+                                ID: record.ID,
+                                guestID: 1
+                            }
+                        }}>
                         <Typography align="inherit" display="inline" variant="body1" color="text.secondary">Check In</Typography>
                     </Link></Typography>
                 </div>

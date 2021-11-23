@@ -3,7 +3,8 @@ import Home from "./Home.js";
 import Header from "./Header.js";
 import Browse from "./Browse.js";
 import SpotPage from "./SpotPage.js";
-import {useEffect} from 'react'
+import CheckIn from "./CheckIn.js";
+import {useEffect} from 'react';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/browse" component={Browse} />
             <Route path="/spot/:id" component={SpotPage} />
+            <Route path="/checkin/:id" component={CheckIn} />
             <Redirect from="/spot" to="/browse" />
           </Switch>
         </div>
