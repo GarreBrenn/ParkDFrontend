@@ -1,8 +1,26 @@
 .paper {
-    height: 200px;
     width: 200px;
     position: absolute;
-    top: 70px;
-    right: 2%;
-    /* z-index:99; */
+    top: 65px;
+    right: 4%;
+    border-radius: 10px !important;
+    border-top-right-radius: 0 !important;
+}
+
+hr {
+    background-color: #eee;
+    border: 0 none;
+    color: #eee;
+    height: 1px;
+}
+
+.listItem {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.listItem:hover {
+    color: #80e8a9
 }
