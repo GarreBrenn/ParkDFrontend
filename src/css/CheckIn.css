@@ -2,13 +2,16 @@
     max-width: 800px;
     margin: auto;
     margin-bottom: 40px;
+    justify-content: center;
+    text-align: center;
 }
 
-.spotImage {
-    width: 800px;
+.spotImg {
+    width: 500px;
     max-height: auto;
     display: block;
     border-radius: 10px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -20,46 +23,13 @@ h1 {
 }
 
 .body {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    display: inline-block;
+    margin: 0 auto;
     align-items: top;
+    text-align: center;
 }
 
-.checkoutPaper {
-    width: 370px;
-    border-radius: 10px !important;
-}
-
-.checkoutContainer {
-    padding: 15px;
-}
-
-.checkoutHeader {
-    display: flex;
-}
-
-.row {
-    margin-top: 30px;
-}
-
-hr {
-    background-color: #eee;
-    border: 0 none;
-    color: #eee;
-    height: 1px;
-}
-
-h3 {
-    padding: 0px;
-    margin: 0px;
-}
-
-.submit {
-    position: absolute;
-    left: 0;
-    color: white;
-    text-transform: inherit;
-    display: block;
-    width: 100%;
+.body > * {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }
