@@ -21,7 +21,9 @@ function Header() {
       <div className="header_right">
         <a href="/browse">Rent A Spot</a>
         <p>Become a host</p>
+        <a href = "/tempPage">Become a host</a>
         <ExpandMoreIcon />
+        <a href="/login">Login</a>
         <Avatar />
       </div>
     </div>
