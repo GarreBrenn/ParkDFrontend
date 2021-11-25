@@ -36,15 +36,9 @@ function Header() {
 
       <div className="header_right">
         <a href="/browse">Rent A Spot</a>
-        <p>Become a host</p>
-<<<<<<< HEAD
-        <Avatar onClick={() => setDropdownOpen(!dropdownOpen)}/>
-=======
         <a href = "/tempPage">Become a host</a>
+        <Avatar onClick={() => setDropdownOpen(!dropdownOpen)}/>
         <ExpandMoreIcon />
-        <a href="/login">Login</a>
-        <Avatar />
->>>>>>> 96e9cbc94505a80d12afe717710261ca78849f2e
       </div>
 
       {dropdownOpen && <Dropdown/>}
