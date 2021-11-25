@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Typography, Button, Input } from '@mui/material';
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "../css/CheckIn.css";
 // const QRCode = require('qrcode.react');
 // import { QrCodeScanner } from '@mui/icons-material';
 //import QrReader from 'react-qr-scanner';
+import QrReader from 'react-qr-reader'
+import { truncate } from 'fs';
 
 function CheckIn() {
     const location = useLocation();
@@ -12,45 +14,56 @@ function CheckIn() {
     const guestID = location.state.guestID;
     const [spot, setSpot] = useState({});
     const [valid, setValid] = useState(false);
-    const [qrData, setQrData] = useState(null);
-    const [file, setFile] = useState(null);
-    const spot2 = {}
-
-    function handleFileUpload(event) {
-        setFile(URL.createObjectURL(event.target.files[0]));
+    const [reservationIndex, setReservationIndex] = useState(null);
+    const [canCheckIn, setCanCheckIn] = useState(false);
+    
+    function isScanValid(scanData) {
+        let scanObj = null;
+        if (scanData == null) {return null;} else {
+            scanObj = JSON.parse(scanData);
+        }
+        console.log("**** is scan valid ****")
+        const res = spot.Record.Reservations[reservationIndex];
+        console.log(res);
+        console.log(scanObj);
+        if (scanObj?.resTimeIn == res.resTimeIn &&
+            scanObj?.resTimeOut == res.resTimeOut &&
+            scanObj?.guestId == res.guestId) {
+            console.log("res matches");
+            return true;
+        } else {
+            console.log("res doesn't match");
+            return false;
+        }
     }
-
+    
     function handleScan(data) {
-        setQrData(data);
+        setCanCheckIn(isScanValid(data));
     }
 
     function handleScanError(err) {
         console.log(err);
     }
 
-    const previewStyle = {
-        height: 240,
-        width: 320
+    function handleCheckIn() {
+        const myData = {
+            spotKey: spot.Key,
+            reservationIndex: reservationIndex,
+            CheckInTime: Date.now()
+        }
+        fetch('http://localhost:3000/testAPI/checkin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(myData),
+            }).then((response) =>
+                response.json().then((data) => {
+                    console.log("response");
+                    console.log(data)
+                }))
     }
 
-    function getFileAndSend() {
-        let selectedFile = document.getElementById("input").files[0];
-        let formData = new FormData();
-        formData.append("file", selectedFile);
-        fetch('http://localhost:3000/testAPI/WHATEVERYOURROUTEIS', {
-            method: 'POST',
-            //Might not be needed idk
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            body: formData
-        }).then((response) => {
-            console.log(response)
-        })
-        //You can then pull the file in backend with something like
-        //let myFile = new File(req.body.file);
-
-    }
     useEffect(() => {
         const myData = {
             spotID: spotID,
@@ -64,18 +77,16 @@ function CheckIn() {
             body: JSON.stringify(myData),
         }).then((response) =>
             response.json().then((data) => {
-                console.log(data)
-                console.log(data.spot)
                 setValid(data.valid);
-                if (valid) {
+                if (data.valid) {
                     setSpot(data.spot);
+                    setReservationIndex(data.reservationIndex);
                 }
             }))
 
-        console.log("here")
     }, []);
 
-    if (valid) {
+    if (valid && !canCheckIn) {
         return (
             <div className="container">
                 <div className="title">
@@ -87,31 +98,32 @@ function CheckIn() {
                 <div className="body">
                     <Typography variant="h5">Your upload</Typography>
                     <Typography variant="body2" color="text.secondary" >
-                        To check in to this spot, upload an image of the QR code that the host has left.
-                        If checkin is successful, you can return to this same spot to check out.
+                        To check in to this spot, please scan your QR code at the spot you're checking in to.
                     </Typography>
-                    <img className="spotImg" src={file ? file : "https://shacknews-ugc.s3.us-east-2.amazonaws.com/user/9647/article-inline/2021-03/template.jpg?versionId=EPuOpjX7pGmrwxIxaF8BBrMfaK4X7f.S"} />
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            id="input"
-                            accept="image/png, image/jpeg"
-                            onChange={handleFileUpload}
-                            hidden
-                        />
-                    </Button>
+                    <div style={{ width: '700px', height: 'auto', margin: '0 auto' }} >
+                        {!canCheckIn && <QrReader delay={300}
+                            onError={handleScanError}
+                            onScan={handleScan}
+                            style={{ width: '100%' }}
+                        />}
+                    </div>
+                    <Button disabled={!canCheckIn} variant="contained"
+                    onClick={handleCheckIn()}> Check In </Button>
+                    <Typography style={{marginTop: "10px"}} paragraph variant="body1" align="center" color="text.secondary">If you're experiencing difficulty checking in, you can  
+                    {/* TODO: SUBSTITUTE GUESTID FOR REAL VALUE */}
+                    <Link to="/reportaproblem">
+                        <Typography align="inherit" display="inline" variant="body1" color="text.secondary">&nbsp;report a problem</Typography>
+                    </Link></Typography>
                 </div>
             </div>
         )
     } else {
         return (
-            <Typography style={{ marginTop: "50px" }} variant="h4" align="center">
-                We're having trouble processing your request. Please try again later.
-            </Typography>
+            <>
+                <Typography style={{ marginTop: "50px" }} variant="h4" align="center">
+                    We're having trouble processing your request. Please try again later.
+                </Typography>
+            </>
         )
     }
 }
