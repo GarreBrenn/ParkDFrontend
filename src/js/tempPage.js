@@ -1,27 +1,51 @@
 import React from "react";
 import "../css/index.css"
+import {Redirect} from "react-router-dom";
 import {useState, useEffect} from "react";
+import {useCookies} from 'react-cookie';
 
-export default function register(){
-    const [mount, setMount] = useState(false)
-    //this is basically your component did mount, do your fetch here
-    useEffect(() => {
-        let body = "Set Body to whatever you wanted to do with it"
-        fetch('https://localhost:3000/testAPI/WHATEVERROUTEHERE', body).then((response) => {
-            console.log(response)
-            setMount(true);
-        })
-    })
+/* var cookieValue = document.cookie
+  .split('; ')
+  .find(row => row.startsWith('test2='))
+  .split('=')[1];
+
+function showCookieValue() {
+  const output = document.getElementById('cookie-value')
+  output.textContent = '> ' + cookieValue
+} */
+
+function ourCookieExists(){ // ARE THEY LOGGED IN CHECK
+    if(document.cookie.split(';').some((item) => item.trim().startsWith('email='))){
+        console.log("THE USER HAS A COOKIE. THEY ARE LOGGED IN.");        
+        return true;
+    }
+    else{
+        console.log("THE USER HAS TO LOGIN")
+        return false;
+    }
+}   
+
+export default function Register(){
+    if (ourCookieExists()){
+        //showCookieValue()
         return (
             <>
-                {mount ?
+                
                 <div>
                     <body>
                         <h1>No peeking unless you're logged in ;)</h1>
                     </body>
                 </div>
-                    : null}
+                
+                    
+                    
             </>
         );
-    
-}
+    }
+    else{
+        return(
+            <Redirect to='/login'></Redirect>
+        )
+    }
+}   //var uri = 'deez%40nuts.com' //use these to convert the URI-encoded cookie email to something with an "@"
+    //var decodedEmail = (decodeURIComponent(uri));
