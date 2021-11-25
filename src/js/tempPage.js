@@ -2,7 +2,7 @@ import React from "react";
 import "../css/index.css"
 import {Redirect} from "react-router-dom";
 import {useState, useEffect} from "react";
-import {useCookies} from 'react-cookie';
+//import {useCookies} from 'react-cookie';
 
 /* var cookieValue = document.cookie
   .split('; ')
