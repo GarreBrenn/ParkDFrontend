@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../css/Map.css";
 import GoogleMapReact from "google-map-react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router-dom";
 
 function Map(props) {
   const [lat_lng, set_lat_lng] = useState(null);
@@ -20,9 +21,9 @@ function Map(props) {
     }
 
     const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
     };
 
     if (navigator.geolocation) {
@@ -46,12 +47,22 @@ function Map(props) {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        <div lat={lat_lng.lat} lng={lat_lng.lng}>
-          <LocationOnIcon fontSize="large" color="secondary" />
-        </div>
         {props.listOfPlaces?.map((place, i) => (
           <div lat={place.LatLong.split("_")[0]} lng={place.LatLong.split("_")[1]} key={i}>
-            <LocationOnIcon fontSize="large" color="primary" />
+            <Link
+              to={{
+                pathname: `/spot/${place.ID}`,
+                state: {
+                  content: {Record: place},
+                  filterInfo: null
+                }
+              }}
+            >
+              <LocationOnIcon className="icon"
+                onClick={() => console.log(place)}
+                fontSize="large"
+                color="primary" />
+            </Link>
           </div>
         ))}
       </GoogleMapReact>
