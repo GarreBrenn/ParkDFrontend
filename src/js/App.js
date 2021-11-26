@@ -5,10 +5,13 @@ import Header from "./Header.js";
 import Browse from "./Browse.js";
 import login from "./login.js"
 import register from "./register.js"
+import logout from "./logout.js"
 import tempPage from "./tempPage.js"
 import SpotPage from "./SpotPage.js";
+
 import CheckIn from "./CheckIn.js";
 import {useEffect} from 'react';
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
@@ -48,6 +51,7 @@ function App() {
             <Route exact path="/login" component={login} />
             <Route exact path="/register" component={register}/>
             <Route exact path="/tempPage" component={tempPage}/>
+            <Route exact path="/logout" component={logout} />
             <Route path="/spot/:id" component={SpotPage} />
             <Route path="/checkin/:id" component={CheckIn} />
             <Redirect from="/spot" to="/browse" />
