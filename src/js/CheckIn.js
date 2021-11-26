@@ -65,7 +65,7 @@ function CheckIn() {
                     console.log("response");
                     console.log(data)
                 }))
-        history.push("/myreservations")
+        history.push("/reservations")
     }
 
     useEffect(() => {
