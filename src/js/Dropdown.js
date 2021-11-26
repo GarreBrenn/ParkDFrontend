@@ -6,6 +6,7 @@ import {
 } from '@mui/material'
 import { Link } from "react-router-dom";
 
+
 function ourCookieExists(){ // CHECK TO SEE IF USER IS LOGGED IN BY EXISTENSE
     if(document.cookie.split(';').some((item) => item.trim().startsWith('email='))){
         console.log("THE USER HAS A COOKIE. THEY ARE LOGGED IN.");        
@@ -19,7 +20,7 @@ function ourCookieExists(){ // CHECK TO SEE IF USER IS LOGGED IN BY EXISTENSE
 
 
 function Dropdown() {
-    if (ourCookieExists()){ // the ARE logged in
+    if (ourCookieExists()){ // the ARE logged in so give only the logOUT function
         return (
             <Paper className="paper" elevation={4}>
               
@@ -62,7 +63,7 @@ function Dropdown() {
             </Paper>
         )
     }
-    else{ // they AREN'T logged in
+    else{ // they AREN'T logged in so give only login option
         return (
             <Paper className="paper" elevation={4}>
             
@@ -78,6 +79,7 @@ function Dropdown() {
                     }
                  }}
              >
+
                 <p className="listItem">Reservations</p>
             </Link>
             <hr />
@@ -103,9 +105,11 @@ function Dropdown() {
                 <p className="listItem">Account</p>
             </Link>
         </Paper>
+
         
     )
-   }
+   } 
+
 }
 
 export default Dropdown
