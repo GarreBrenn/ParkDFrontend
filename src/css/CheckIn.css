@@ -1,0 +1,35 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 40px;
+    justify-content: center;
+    text-align: center;
+}
+
+.spotImg {
+    width: 500px;
+    max-height: auto;
+    display: block;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.body {
+    display: inline-block;
+    margin: 0 auto;
+    align-items: top;
+    text-align: center;
+}
+
+.body > * {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
