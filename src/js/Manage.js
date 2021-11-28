@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import { Grid, Box } from '@mui/material'
 import SpotCard from './SpotCard.js'
 
 function Manage() {
     const [cardData, setCardData] = useState([]);
+    const location = useLocation();
+
+    console.log(location);
 
     useEffect(() => {
+        // TODO: REPLACE WITH /gethostspots
         fetch('http://localhost:3000/testAPI/query', {
             method: 'POST',
             headers: {
@@ -24,7 +29,7 @@ function Manage() {
                     {
                         cardData.map(d => {
                             return <Grid item key={d.Key} xs={12} md={6} lg={4} xl={3}>
-                                <SpotCard content={d}/>
+                                <SpotCard content={d} manage/>
                             </Grid>
                         })
                     }

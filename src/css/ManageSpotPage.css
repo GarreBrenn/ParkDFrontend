@@ -1,0 +1,75 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.spotImage {
+    width: 800px;
+    max-height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.body {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    min-width: 800px;
+}
+
+.body-flex {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.checkoutPaper {
+    margin-top: 20px;
+    width: 370px;
+    border-radius: 10px !important;
+}
+
+.checkoutContainer {
+    padding: 15px;
+}
+
+.checkoutHeader {
+    display: flex;
+}
+
+.row {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+hr {
+    background-color: #eee;
+    border: 0 none;
+    color: #eee;
+    height: 1px;
+}
+
+h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.button {
+    color: white !important;
+    display: block;
+}
+
+.text-field {
+    min-width: 50px !important;
+}

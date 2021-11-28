@@ -5,45 +5,53 @@ import {
     Divider
 } from '@mui/material'
 import { Link } from "react-router-dom";
+import { checkCookieExists, getUserID } from './checkCookieExists';
 
 function Dropdown() {
+
+    //get userID if logged in
+    const userID = null;
+    if (checkCookieExists()) {
+        userID = getUserID();
+    }
+
     return (
         <Paper className="paper" elevation={4}>
-            <Link style={{textDecoration: "none"}} to="/login">
+            <Link style={{ textDecoration: "none" }} to="/login">
                 <p className="listItem">Login</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} to="logout">
+            <Link style={{ textDecoration: "none" }} to="logout">
                 <p className="listItem">Logout</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} 
+            <Link style={{ textDecoration: "none" }}
                 to={{
                     pathname: `/reservations`,
                     state: {
-                        userID: 1
+                        userID: userID
                     }
                 }}
             >
                 <p className="listItem">Reservations</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} 
+            <Link style={{ textDecoration: "none" }}
                 to={{
                     pathname: `/manage`,
                     state: {
-                        userID: 1
+                        userID: userID
                     }
                 }}
             >
                 <p className="listItem">Manage Spots</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} 
+            <Link style={{ textDecoration: "none" }}
                 to={{
                     pathname: `/account`,
                     state: {
-                        userID: 1
+                        userID: userID
                     }
                 }}
             >

@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/index.css"
 import {Redirect} from "react-router-dom";
-import checkCookieExists from "./checkCookieExists";
+import { checkCookieExists, getUserID }from "./checkCookieExists";
 //import {useCookies} from 'react-cookie';
 
 /* var cookieValue = document.cookie
@@ -26,6 +26,8 @@ function showCookieValue() {
 // }   
 
 export default function Register(){
+    console.log("username: " + getUserID());
+    console.log("cookie: " + checkCookieExists());
     if (checkCookieExists()){
         //showCookieValue()
         return (

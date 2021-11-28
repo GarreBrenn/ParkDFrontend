@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Link } from "react-router-dom";
 
-function SpotCard({ content, filterInfo, location }) {
+function SpotCard({ content, filterInfo, location, manage }) {
     const [distanceAndTime, setDistanceAndTime] = useState({});
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function SpotCard({ content, filterInfo, location }) {
     }, []);
 
     // TODO: Add CardActionArea
-    if (Object.keys(distanceAndTime).length !== 0) {
+    if (Object.keys(distanceAndTime).length !== 0 && !manage) {
         return (
             <div style={{ justifyContent: "center" }}>
                 <Card sx={{ width: 345, m: "auto" }} elevation={3}>
@@ -82,14 +82,15 @@ function SpotCard({ content, filterInfo, location }) {
                     <CardActions>
                         <Link
                             to={{
-                                pathname: `/spot/${content.Record.ID}`,
+                                pathname: `/managespot/${content.Record.ID}`,
                                 state: {
                                     content: content,
-                                    filterInfo: filterInfo
+                                    filterInfo: filterInfo,
+                                    manage: true
                                 }
                             }}
                         >
-                            <Button size="small">Buy</Button>
+                            <Button size="small">Manage Spot</Button>
                         </Link>
                     </CardActions>
                 </Card>
