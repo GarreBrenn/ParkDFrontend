@@ -1,26 +1,3 @@
-//import React, { useEffect, useState} from 'react'
-//import { useLocation} from "react-router-dom";
-//import "../css/Browse.css";
-
-//export default function Browse() {
-//    const location = useLocation();
-//    const [queryData, setQueryData] = useState([]);
-//    const [firstColumnData, setFirstColumnData] = useState([]);
-//    const [secondColumnData, setSecondColumnData] = useState([]);
-//    const [thirdColumnData, setThirdColumnData] = useState([]);
-//    let data;
-//   useEffect(() => {
-//        data = {
-//            startDate: location.state != null ? location.state.startDate : null,
-//            endDate: location.state != null ? location.state.endDate : null,
-//            price: location.state != null ? location.state.price : null
-//        }
-//            
-//    }, []);
-//
-//    );
-//}
-
 import React from 'react';
 import '../css/Browse.css';
 import { Grid, Box } from '@mui/material'
@@ -29,9 +6,6 @@ export default class Browse extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // firstColumnData: null,
-            // secondColumnData: null,
-            // thirdColumnData: null
             cardData: null,
             lat_lng: {}
         }

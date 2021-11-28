@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/index.css"
 import {Redirect} from "react-router-dom";
-import {useState, useEffect} from "react";
+import { checkCookieExists, getUserID }from "./checkCookieExists";
 //import {useCookies} from 'react-cookie';
 
 /* var cookieValue = document.cookie
@@ -14,19 +14,21 @@ function showCookieValue() {
   output.textContent = '> ' + cookieValue
 } */
 
-function ourCookieExists(){ // ARE THEY LOGGED IN CHECK
-    if(document.cookie.split(';').some((item) => item.trim().startsWith('email='))){
-        console.log("THE USER HAS A COOKIE. THEY ARE LOGGED IN.");        
-        return true;
-    }
-    else{
-        console.log("THE USER HAS TO LOGIN")
-        return false;
-    }
-}   
+// function ourCookieExists(){ // ARE THEY LOGGED IN CHECK
+//     if(document.cookie.split(';').some((item) => item.trim().startsWith('email='))){
+//         console.log("THE USER HAS A COOKIE. THEY ARE LOGGED IN.");        
+//         return true;
+//     }
+//     else{
+//         console.log("THE USER HAS TO LOGIN")
+//         return false;
+//     }
+// }   
 
 export default function Register(){
-    if (ourCookieExists()){
+    console.log("username: " + getUserID());
+    console.log("cookie: " + checkCookieExists());
+    if (checkCookieExists()){
         //showCookieValue()
         return (
             <>

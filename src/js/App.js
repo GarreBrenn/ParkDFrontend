@@ -8,8 +8,9 @@ import register from "./register.js"
 import logout from "./logout.js"
 import tempPage from "./tempPage.js"
 import SpotPage from "./SpotPage.js";
-
+import ManageSpotPage from "./ManageSpotPage.js"
 import CheckIn from "./CheckIn.js";
+import Manage from "./Manage.js";
 import {useEffect} from 'react';
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -51,8 +52,10 @@ function App() {
             <Route exact path="/login" component={login} />
             <Route exact path="/register" component={register}/>
             <Route exact path="/tempPage" component={tempPage}/>
+            <Route exact path="/manage" component={Manage}/>
             <Route exact path="/logout" component={logout} />
             <Route path="/spot/:id" component={SpotPage} />
+            <Route path="/managespot/:id" component={ManageSpotPage} />
             <Route path="/checkin/:id" component={CheckIn} />
             <Redirect from="/spot" to="/browse" />
           </Switch>

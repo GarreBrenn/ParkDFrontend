@@ -5,6 +5,7 @@ import {
     Divider
 } from '@mui/material'
 import { Link } from "react-router-dom";
+import { checkCookieExists, getUserID } from './checkCookieExists';
 
 
 function ourCookieExists(){ // CHECK TO SEE IF USER IS LOGGED IN BY EXISTENSE
@@ -20,6 +21,13 @@ function ourCookieExists(){ // CHECK TO SEE IF USER IS LOGGED IN BY EXISTENSE
 
 
 function Dropdown() {
+  
+  //get userID if logged in
+  const userID = null;
+  if (checkCookieExists()) {
+      userID = getUserID();
+  }
+
     if (ourCookieExists()){ // the ARE logged in so give only the logOUT function
         return (
             <Paper className="paper" elevation={4}>
@@ -83,22 +91,22 @@ function Dropdown() {
                 <p className="listItem">Reservations</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} 
+            <Link style={{ textDecoration: "none" }}
                 to={{
                     pathname: `/manage`,
                     state: {
-                        userID: 1
+                        userID: userID
                     }
                 }}
             >
                 <p className="listItem">Manage Spots</p>
             </Link>
             <hr />
-            <Link style={{textDecoration: "none"}} 
+            <Link style={{ textDecoration: "none" }}
                 to={{
                     pathname: `/account`,
                     state: {
-                        userID: 1
+                        userID: userID
                     }
                 }}
             >
