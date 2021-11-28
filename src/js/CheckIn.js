@@ -114,7 +114,7 @@ function CheckIn() {
                     <Button disabled={!canCheckIn} variant="contained"
                     onClick={handleCheckIn}> Check In </Button>
                     <Typography style={{marginTop: "10px"}} paragraph variant="body1" align="center" color="text.secondary">If you're experiencing difficulty checking in, you can  
-                    {/* TODO: SUBSTITUTE GUESTID FOR REAL VALUE */}
+
                     <Link to="/reportaproblem">
                         <Typography align="inherit" display="inline" variant="body1" color="text.secondary">&nbsp;report a problem</Typography>
                     </Link></Typography>

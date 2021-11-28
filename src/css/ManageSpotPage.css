@@ -73,3 +73,8 @@ h3 {
 .text-field {
     min-width: 50px !important;
 }
+
+.qr-holder {
+    margin-top: 20px;
+    text-align: center;
+}

@@ -36,9 +36,8 @@ function Header() {
 
       <div className="header_right">
         <a href="/browse">Rent A Spot</a>
-        <a href = "/tempPage">Become a host</a>
+        {/* <a href = "/tempPage">Become a host</a> */}
         <Avatar onClick={() => setDropdownOpen(!dropdownOpen)}/>
-        <ExpandMoreIcon />
       </div>
 
       {dropdownOpen && <Dropdown/>}

@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 import { MenuItem } from '@mui/material';
 import { Link } from "react-router-dom";
 import { checkCookieExists, getUserID } from './checkCookieExists';
+import QRCode from 'react-qr-code';
 
 function ManageSpotPage() {
     const location = useLocation();
@@ -133,7 +134,17 @@ function ManageSpotPage() {
                             </TextField>
                         </div>
                         <div className="row">
-                            <Button onClick={handleUpdate} className="button" variant="contained">Update Spot</Button>
+                            <Link style={{ textDecoration: "none" }}
+                                to={{
+                                    pathname: `/manage`,
+                                    state: {
+                                        userID: userID
+                                    }
+                                }}
+                                onClick={handleUpdate}
+                            >
+                                <Button className="button" variant="contained">Update Spot</Button>
+                            </Link>
                         </div>
                     </div>
                     <div>
@@ -143,7 +154,9 @@ function ManageSpotPage() {
 
                                 </div>
                                 <hr />
-
+                                <div className="qr-holder">
+                                    <QRCode value="Garrett" />
+                                </div>
                             </div>
                         </Paper>
                     </div>
@@ -164,9 +177,9 @@ function ManageSpotPage() {
                         >Delete Spot</Button>
                     </Link>
                 </div>
-                </div>
             </div>
-            )
+        </div>
+    )
 }
 
-            export default ManageSpotPage
+export default ManageSpotPage

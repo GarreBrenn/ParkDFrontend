@@ -23,7 +23,7 @@ function ourCookieExists(){ // CHECK TO SEE IF USER IS LOGGED IN BY EXISTENSE
 function Dropdown() {
   
   //get userID if logged in
-  const userID = null;
+  let userID = null;
   if (checkCookieExists()) {
       userID = getUserID();
   }
@@ -77,40 +77,6 @@ function Dropdown() {
             
              <Link style={{textDecoration: "none"}} to="/login">
                     <p className="listItem">Login</p>
-            </Link>
-                <hr />
-             <Link style={{textDecoration: "none"}} 
-                 to={{
-                       pathname: `/reservations`,
-                       state: {
-                        userID: 1
-                    }
-                 }}
-             >
-
-                <p className="listItem">Reservations</p>
-            </Link>
-            <hr />
-            <Link style={{ textDecoration: "none" }}
-                to={{
-                    pathname: `/manage`,
-                    state: {
-                        userID: userID
-                    }
-                }}
-            >
-                <p className="listItem">Manage Spots</p>
-            </Link>
-            <hr />
-            <Link style={{ textDecoration: "none" }}
-                to={{
-                    pathname: `/account`,
-                    state: {
-                        userID: userID
-                    }
-                }}
-            >
-                <p className="listItem">Account</p>
             </Link>
         </Paper>
 

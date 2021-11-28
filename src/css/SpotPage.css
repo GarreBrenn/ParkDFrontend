@@ -29,6 +29,7 @@ h1 {
 .checkoutPaper {
     width: 370px;
     border-radius: 10px !important;
+    margin: 0 auto;
 }
 
 .checkoutContainer {
