@@ -6,13 +6,14 @@ import "../css/CheckIn.css";
 // import { QrCodeScanner } from '@mui/icons-material';
 //import QrReader from 'react-qr-scanner';
 import QrReader from 'react-qr-reader'
-import { truncate } from 'fs';
+import { checkCookieExists, getUserID } from './checkCookieExists';
 
 function CheckIn() {
     const location = useLocation();
     const history = useHistory();
     const spotID = location.state.ID;
     const guestID = location.state.guestID;
+    const [userID, setUserID] = useState(null);
     const [spot, setSpot] = useState({});
     const [valid, setValid] = useState(false);
     const [reservationIndex, setReservationIndex] = useState(null);
@@ -27,9 +28,10 @@ function CheckIn() {
         const res = spot.Record.Reservations[reservationIndex];
         console.log(res);
         console.log(scanObj);
-        if (scanObj?.resTimeIn === res.resTimeIn &&
-            scanObj?.resTimeOut === res.resTimeOut &&
-            scanObj?.guestId === res.guestId) {
+        if (scanObj?.SpotID === spot.Record.ID &&
+            scanObj?.HostID === spot.Record.HostID &&
+            scanObj?.Address === spot.Record.Address &&
+            userID === res.guestId) {
             console.log("res matches");
             return true;
         } else {
@@ -69,10 +71,17 @@ function CheckIn() {
     }
 
     useEffect(() => {
+        if (checkCookieExists()) {
+            setUserID(getUserID());
+        } else {
+            history.push("/login");
+        }
+
         const myData = {
             spotID: spotID,
             guestID: guestID
         }
+        console.log(myData);
         fetch('http://localhost:3000/testAPI/getreservation', {
             method: 'POST',
             headers: {

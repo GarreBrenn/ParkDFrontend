@@ -60,7 +60,7 @@ function Dropdown() {
                 <hr />
                 <Link style={{textDecoration: "none"}} 
                     to={{
-                        pathname: `/account`,
+                        pathname: `/myaccount`,
                         state: {
                             userID: 1
                         }

@@ -28,6 +28,13 @@ function ManageSpotPage() {
     const [userID, setUserID] = useState(null);
     const states = [{ value: "Available", label: "Available" },
     { value: "Unavailable", label: "Unavailable" }];
+
+    const qrData = {
+        SpotID: record.ID,
+        Address: record.Address,
+        HostID: record.HostID
+    }
+
     const handleStateChange = (event) => {
         setState(event.target.value);
     };
@@ -155,7 +162,7 @@ function ManageSpotPage() {
                                 </div>
                                 <hr />
                                 <div className="qr-holder">
-                                    <QRCode value="Garrett" />
+                                    <QRCode value={JSON.stringify(qrData)} />
                                 </div>
                             </div>
                         </Paper>
