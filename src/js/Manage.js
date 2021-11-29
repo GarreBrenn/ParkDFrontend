@@ -28,23 +28,22 @@ function Manage() {
     }, []);
 
     console.log(cardData)
-    if (cardData.length !== 0) { 
-        return (
-            <Box sx={{ flexGrow: 1, marginTop: 5 }}>
-                <Grid container rowSpacing={5}>
-                    {
-                        cardData.map(d => {
-                            return <Grid item key={d.Key} xs={12} md={6} lg={4} xl={3}>
-                                <SpotCard content={{Record: d}} manage/>
-                            </Grid>
-                        })
-                    }
+    return (
+        <Box sx={{ flexGrow: 1, marginTop: 5 }}>
+            <Grid container rowSpacing={5}>
+                <Grid item xs={12} md={6} lg={4} xl={3}>
+                    <SpotCard addnew />
                 </Grid>
-            </Box>
-        );
-    } else {
-        return (<h1>It looks like you don't have any spots...</h1>);
-    }
+                {
+                    cardData.map(d => {
+                        return <Grid item key={d.Key} xs={12} md={6} lg={4} xl={3}>
+                            <SpotCard content={{ Record: d }} manage />
+                        </Grid>
+                    })
+                }
+            </Grid>
+        </Box>
+    );
 }
 
 export default Manage
