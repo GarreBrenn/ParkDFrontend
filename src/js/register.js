@@ -7,7 +7,7 @@ export default class login extends React.Component{
                 <body>
                 <h1>Account Registration</h1>
                 <br></br>
-                <h2>Please enter a your email address and create a password</h2>
+                <h2>Please enter your email address and create a password</h2>
                 <br></br>
                      <form action="http://localhost:3000/testAPI/register" method="POST">
                         <label for="Email">Input email address</label>
