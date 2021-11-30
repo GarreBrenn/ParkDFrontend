@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/index.css"
-export default class login extends React.Component{
+export default class register extends React.Component{
     render(){
         return (
             <div>

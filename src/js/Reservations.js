@@ -21,7 +21,6 @@ function Reservations() {
         }
 
         const myData = {
-            // TODO: REPLACE
             guestID: userID
         }
         console.log(myData);

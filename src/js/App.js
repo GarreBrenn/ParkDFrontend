@@ -4,6 +4,7 @@ import Home from "./Home.js";
 import Header from "./Header.js";
 import Browse from "./Browse.js";
 import login from "./login.js"
+import register from "./register.js"
 import Register from "./Register.js"
 import Reservations from "./Reservations.js"
 import Account from "./Account.js"
@@ -52,6 +53,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/browse" component={Browse} />
             <Route exact path="/login" component={login} />
+            <Route exact path="/register" component={register} />
             <Route exact path="/reservations" component={Reservations}/>
             <Route exact path="/registerspot" component={Register}/>
             <Route exact path="/myaccount" component={Account}/>

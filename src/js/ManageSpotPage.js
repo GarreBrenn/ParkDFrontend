@@ -71,6 +71,7 @@ function ManageSpotPage() {
             }))
     }
 
+    // TODO: Throws err 400 for some reason
     function handleUpdate() {
         const myData = {
             price: price,

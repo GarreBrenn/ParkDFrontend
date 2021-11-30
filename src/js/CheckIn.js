@@ -67,7 +67,7 @@ function CheckIn() {
                     console.log("response");
                     console.log(data)
                 }))
-        history.push("/reservations")
+        history.push("/")
     }
 
     useEffect(() => {
@@ -79,8 +79,8 @@ function CheckIn() {
 
         const myData = {
             spotID: spotID,
-            // guestID: guestID
-            guestID: 1
+            guestID: guestID
+            // guestID: 1
         }
         console.log(myData);
         fetch('http://localhost:3000/testAPI/getreservation', {
