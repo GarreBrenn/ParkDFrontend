@@ -84,7 +84,7 @@ export default function SpotPage() {
             const myData = {
                 timeIn: Date.parse(startDate),
                 timeOut: Date.parse(endDate),
-                id: record.ID,
+                id: Number.parseInt(record.ID),
                 guestId: userID
             }
             console.log("sending request with...")

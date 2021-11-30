@@ -10,7 +10,12 @@ function checkCookieExists(){ // ARE THEY LOGGED IN CHECK
 }
 
 function getUserID() {
-    return (document.cookie.split(';')[1].trim().substr(6).replace("%40","@"));
+    var uri = document.cookie;
+    var decodedEmail = decodeURIComponent(uri);
+    var emailSubstring = decodedEmail.substring(6);
+    console.log(emailSubstring);
+    return (emailSubstring)
+    //return (document.cookie.split(';')[1].trim().substr(6).replace("%40","@"));
 }
 // const userID = document.cookie.split(';')[1].trim().substr(6).replace("%40","@");
 

@@ -79,7 +79,8 @@ function CheckIn() {
 
         const myData = {
             spotID: spotID,
-            guestID: guestID
+            // guestID: guestID
+            guestID: 1
         }
         console.log(myData);
         fetch('http://localhost:3000/testAPI/getreservation', {

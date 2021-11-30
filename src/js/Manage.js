@@ -13,7 +13,7 @@ function Manage() {
     useEffect(() => {
         const myData = {
             // HostID: getUserID()
-            HostID: 1
+            HostID: "hostID2"
         }
         fetch('http://localhost:3000/testAPI/gethostspots', {
             method: 'POST',
