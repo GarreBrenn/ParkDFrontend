@@ -19,11 +19,11 @@ function SpotCard({ content, filterInfo, location, manage, addnew, regular }) {
                 },
             }).then((response) =>
                 response.json().then((data) => {
-                    const distanceAndTime = {
-                        distance: data.rows[0].elements[0].distance.text,
-                        time: data.rows[0].elements[0].duration.text
-                    }
-                    setDistanceAndTime(distanceAndTime);
+                    // const distanceAndTime = {
+                    //     distance: data.rows[0].elements[0].distance.text,
+                    //     time: data.rows[0].elements[0].duration.text
+                    // }
+                    // setDistanceAndTime(distanceAndTime);
                 }))
         }
     }, []);

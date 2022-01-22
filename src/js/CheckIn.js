@@ -91,6 +91,7 @@ function CheckIn() {
             body: JSON.stringify(myData),
         }).then((response) =>
             response.json().then((data) => {
+                console.log(data);
                 setValid(data.valid);
                 if (data.valid) {
                     setSpot(data.spot);

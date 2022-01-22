@@ -67,7 +67,7 @@ export default class Browse extends React.Component {
                         {
                             this.state.cardData.map(d => {
                                 return <Grid item key={d.Key} xs={12} md={6} lg={4} xl={3}>
-                                    <SpotCard content={d}
+                                    <SpotCard content={d} regular
                                         filterInfo={this.props.location.state}
                                         location={this.state.lat_lng} />
                                 </Grid>
